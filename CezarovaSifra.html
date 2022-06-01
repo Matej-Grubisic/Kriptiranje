@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <label>Unesi pomak:</label>
+        <input type="text" class="pomak"/>
+        <label>Unesi rijec sa kojom zelis sifrirat:</label>
+        <input type="text" class="slovaa"/>
+        <button class="sub" onclick="myProvjera()">Unesi</button>
+        <br></br>
+        <div>
+            Ispisuje se u konzoli sve!
+        </div>
+    </div>
+    <script>
+        let arr = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+        let i = 0;
+        let rijec = "sigurnost i kriptografija";
+        let sifra, rijec2 = "";
+        function myFunction(){
+            let n = document.getElementsByClassName('pomak')[0].value;
+            n = parseInt(n);
+            console.log(n);
+            for(i; i < rijec.length; i++){
+                var slovo = rijec[i];
+                if(slovo == " "){
+                    rijec2 += (" ");
+                }
+                else{
+                    var index_of = arr.indexOf(slovo);
+                    sifra = index_of + n;
+                    if(sifra > 25){
+                        sifra = sifra - 25;
+                    }
+                    rijec2 += arr[sifra];
+                }
+            }
+            console.log(rijec2);
+        }
+        function myProvjera(){
+            let kljuc = document.getElementsByClassName('slovaa')[0].value;
+            let n1 = [];
+            for(i; i < kljuc.length; i++){
+                var slovo = kljuc[i];
+                console.log(slovo);
+                if(!n1.includes(slovo)){
+                   n1.push(slovo);
+                }
+                // n += slovo;
+                // console.log(n)
+                // if(!n.includes(slovo)){
+                // }
+            }
+            console.log(rijec2);
+            console.log(n1);
+            for(i = 0; i < arr.length; i++){
+                var slovo1 = arr[i];
+                console.log(slovo1);
+                if(!n1.includes(slovo1)){
+                   n1.push(slovo1);
+                }
+                // n += slovo;
+                // console.log(n)
+                // if(!n.includes(slovo)){
+                // }
+            }
+            var sifra1, rijec3 = "";
+            for(i=0;i<rijec.length;i++){
+                var ispis = rijec[i];
+                if(ispis == " "){
+                    rijec3 += (" ");
+                }
+                else{
+                    var index_of1 = arr.indexOf(ispis);
+                    rijec3 += n1[index_of1].toString();
+                }
+            }
+            console.log(rijec3);
+        }
+    </script>
+</body>
+</html>
