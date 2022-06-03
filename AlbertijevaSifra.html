@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <label>Unesi pomak:</label>
+        <input type="text" class="pomak"/>
+        <input type="text" class="slovaa"/>
+        <button class="sub" onclick="myProvjera()">Unesi kljuc</button>
+        <button class="sub" onclick="myFunction()">Unesi pomak</button>
+        <button class="sub" onclick="myFunction1()">Sifriraj sa albertovon sifron</button>
+    </div>
+    <script>
+        var arr = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+        let i = 0;
+        let rijec = "sigurnost i kriptografija";
+        let arr2 = [];
+        function myFunction(){
+            let sifra, rijec2 = "";
+            let n = document.getElementsByClassName('pomak')[0].value;
+            n = parseInt(n);
+            for(i=0; i < arr.length; i++){
+                var slovo = arr[i];
+                if(slovo == " "){
+                    rijec2 += (" ");
+                }
+                else{
+                    var index_of = arr.indexOf(slovo);
+                    sifra = index_of + n;
+                    if(sifra > 25){
+                        sifra = sifra - 26;
+                    }
+                    rijec2 = arr[sifra];
+                    for(i1=0;i1<rijec2.length;i1++){
+                        arr2.push(rijec2);
+                    }
+                }
+            }
+            console.log(arr2);
+        }
+        var n1 = [];
+        function myProvjera(){
+            let sifra, rijec2 = "";
+            let kljuc = document.getElementsByClassName('slovaa')[0].value;
+            for(i=0; i < kljuc.length; i++){
+                var slovo = kljuc[i];
+                /*
+                console.log(slovo);
+                */
+                if(!n1.includes(slovo)){
+                   n1.push(slovo);
+                }
+                // n += slovo;
+                // console.log(n)
+                // if(!n.includes(slovo)){
+                // }
+            }
+            /*
+            console.log(rijec2);
+            console.log(n1);
+            */
+            for(i = 0; i < arr.length; i++){
+                var slovo1 = arr[i];
+                /*
+                console.log(slovo1);
+                */
+                if(!n1.includes(slovo1)){
+                   n1.push(slovo1);
+                }
+                // n += slovo;
+                // console.log(n)
+                // if(!n.includes(slovo)){
+                // }
+            }
+            var sifra1, rijec3 = "";
+            for(i=0;i<rijec.length;i++){
+                var ispis = rijec[i];
+                if(ispis == " "){
+                    rijec3 += (" ");
+                }
+                else{
+                    var index_of1 = arr.indexOf(ispis);
+                    rijec3 += n1[index_of1].toString();
+                }
+            }
+            console.log(n1);
+        }
+        function myFunction1(){
+            /*
+            var n = document.getElementsByClassName('pomak')[0].value;
+            n = parseInt(n);
+            */
+            let sifra5
+            var slovo1, rijec4 = "";
+            for(i=0;i<rijec.length;i++){
+                slovo1 = rijec[i];
+                if(slovo1 == " "){
+                    rijec4 += (" ");
+                }
+                else{
+                    var index_of1 = arr.indexOf(slovo1);
+                    sifra5 = index_of1;
+                    if(sifra5 > 25){
+                        sifra5 = sifra5 - 25;
+                    }
+                    if(sifra5 % 2 == 0){
+                        rijec4 += n1[sifra5];
+                    }
+                    
+                    else if(sifra5 % 2 !== 0){
+                        let noviarr2 = 0;   
+                        /* console.log(arr2[sifra5]);*/
+                        rijec4 += arr2[sifra5];
+                    }
+                    
+                }
+            }
+            console.log(rijec4)
+        }
+    </script>
+</body>
+</html>
